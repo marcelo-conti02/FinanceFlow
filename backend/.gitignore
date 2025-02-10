@@ -1,0 +1,40 @@
+# Pasta de build e compilação
+bin/
+obj/
+out/
+
+# Configuração de usuário do Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.cache
+
+# Dependências e pacotes
+packages/
+*.nupkg
+*.snupkg
+
+# Arquivos de log e depuração
+*.log
+logs/
+debug.log
+
+# Banco de dados SQLite e migrações
+*.db
+*.db-journal
+Migrations/
+
+# Configurações sensíveis
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Arquivos temporários do sistema
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+
+# Arquivos do Rider e JetBrains
+.idea/
+*.iml

@@ -2,9 +2,15 @@ public class TransactionRepository : ITransactionRepository
 {
     private readonly AppDbContext appDbContext;
 
+
     public TransactionRepository(AppDbContext appDbContext)
     {
         this.appDbContext = appDbContext;
+    }
+
+    public Transaction? GetById(int id)
+    {
+        return appDbContext.Transactions.Find(id);
     }
 
     public async Task Insert(Transaction transaction)

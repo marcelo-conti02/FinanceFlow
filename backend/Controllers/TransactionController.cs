@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/transactions")]
 public class TransactionController : ControllerBase
 {
-    private readonly ITransactionRepository repository;
+    private readonly ITransactionService service;
 
-    public TransactionController(ITransactionRepository repository)
+    public TransactionController(ITransactionService service)
     {
-        this.repository = repository;
+        this.service = service;
     }
 
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var transaction = repository.GetById(id);
+        var transaction = service.GetTransactionById(id);
 
         if (transaction == null)
             return NotFound();
@@ -25,7 +25,7 @@ public class TransactionController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var transactions = repository.GetAll();
+        var transactions = service.GetAllTransactions();
         return Ok(transactions);
     }
 
@@ -35,9 +35,7 @@ public class TransactionController : ControllerBase
         if (transaction == null)
             return BadRequest("Transaction data is required");
 
-        var newTransaction = new Transaction(transaction.Description, transaction.Value, transaction.Type, transaction.UserId);
-
-        repository.Insert(newTransaction);
+        var newTransaction = service.CreateTransaction(transaction, transaction.UserId);
 
         return CreatedAtAction(nameof(GetById), new { id = newTransaction.Id }, newTransaction);
     }

@@ -22,6 +22,8 @@ debug.log
 # Banco de dados SQLite e migrações
 *.db
 *.db-journal
+*.db-shm
+*.db-wal
 Migrations/
 
 # Configurações sensíveis

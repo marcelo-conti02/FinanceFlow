@@ -10,10 +10,10 @@ public class Transaction
 
     public string Description { get; set; }
     public decimal Value { get; set; }
-    public string Type { get; set; }
+    public TransactionType Type { get; set; }
     public int UserId { get; set; }
 
-    public Transaction(string description, decimal value, string type, int userId)
+    public Transaction(string description, decimal value, TransactionType type, int userId)
     {
         Description = description;
         Value = value;

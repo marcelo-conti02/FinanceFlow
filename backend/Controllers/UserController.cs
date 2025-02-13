@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/users")]
 public class UserController : ControllerBase
 {
-    private readonly IUserRepository repository;
+    private readonly IUserService service;
 
-    public UserController(IUserRepository repository)
+    public UserController(IUserService service)
     {
-        this.repository = repository;
+        this.service = service;
     }
 
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var user = repository.GetById(id);
+        var user = service.GetUserById(id);
 
         if (user == null)
             return NotFound();
@@ -25,7 +25,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var users = repository.GetAll();
+        var users = service.GetAllUsers();
         return Ok(users);
     }
 
@@ -37,7 +37,7 @@ public class UserController : ControllerBase
 
         var newUser = new User(user.Name, user.Age);
 
-        repository.Insert(newUser);
+        service.CreateUser(newUser);
 
         return CreatedAtAction(nameof(GetById), new { id = newUser.Id }, newUser);
     }

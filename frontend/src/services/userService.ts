@@ -12,7 +12,7 @@ const userService = {
                 await axios.get(`${API_BASE_URL}/users`);
             const users = response.data.userDtos;
 
-            return users
+            return users;
         } catch (error) {
             console.log("Error fetching users:", error);
             throw error;

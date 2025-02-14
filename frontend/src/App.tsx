@@ -1,12 +1,10 @@
-import './App.css'
+import UserTable from './components/users/UserTable'
 
 function App() {
 
 
   return (
-    <>
-      
-    </>
+    <UserTable/>
   )
 }
 

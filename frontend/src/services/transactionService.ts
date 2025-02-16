@@ -27,10 +27,20 @@ const transactionService = {
 
     getTransactionById: async (TransactionId: number): Promise<TransactionDto | undefined> => {
         try {
-            const response = await axios.get<TransactionDto>(`${API_BASE_URL}/Transactions/${TransactionId}`);
+            const response = await axios.get<TransactionDto>(`${API_BASE_URL}/transactions/${TransactionId}`);
             return response.data;
         } catch (error) {
-            console.log("Error fetching Transaction:", error);
+            console.log("Error fetching transaction:", error);
+            throw error;
+        }
+    },
+
+    getTransactionsByUserId: async (UserId: number): Promise<TransactionDto[]> => {
+        try {
+            const response = await axios.get<TransactionDto[]>(`${API_BASE_URL}/transactions/user/${UserId}`);
+            return response.data;
+        } catch (error) {
+            console.log("Error fetching transactions:", error);
             throw error;
         }
     }

@@ -15,7 +15,7 @@ export default function UserTable() {
 
     const listUsers = () => {
         return users.map((user) => (
-            <UserTableItem key={user.id} name={user.name} age={user.age} />
+            <UserTableItem key={user.id} id={user.id} name={user.name} age={user.age} />
         ))
     };
 

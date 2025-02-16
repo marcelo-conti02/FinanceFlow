@@ -23,4 +23,9 @@ public class TransactionRepository : ITransactionRepository
     {
         return appDbContext.Transactions.ToList();
     }
+
+    public List<Transaction> GetByUserId(int userId)
+    {
+        return appDbContext.Transactions.Where(transaction => transaction.UserId == userId).ToList();
+    }
 }

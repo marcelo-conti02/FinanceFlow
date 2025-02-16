@@ -35,4 +35,9 @@ public class TransactionService : ITransactionService
     {
         return transactionRepository.GetAll();
     }
+
+    public List<Transaction>? GetTransactionsByUserId(int userId)
+    {
+        return transactionRepository.GetByUserId(userId);
+    }
 }

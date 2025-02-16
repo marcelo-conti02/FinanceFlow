@@ -39,4 +39,15 @@ public class TransactionController : ControllerBase
 
         return CreatedAtAction(nameof(GetById), new { id = newTransaction.Id }, newTransaction);
     }
+
+    [HttpGet("user/{userId}")]
+    public IActionResult GetByUserId(int userId)
+    {
+        var transactions = service.GetTransactionsByUserId(userId);
+
+        if (transactions == null)
+            return NotFound();
+        else
+            return Ok(transactions);
+    }
 }

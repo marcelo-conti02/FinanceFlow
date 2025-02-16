@@ -7,7 +7,15 @@ export default function SeeTransactionsModal(props: { setIsOpen: (isOpen: boolea
     const [transactions, setTransactions] = useState<TransactionDto[]>([]);
 
     useEffect(() => {
+        // blocks scrolling on the main page
+        document.body.style.overflow = "hidden";
+
         transactionService.getTransactionsByUserId(props.userId).then(setTransactions);
+
+        return () => {
+            // revert scrolling block
+            document.body.style.overflow = "auto";
+        };
     }, []);
 
     const listTransactions = () => {

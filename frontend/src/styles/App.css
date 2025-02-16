@@ -12,6 +12,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
+    overflow-y: auto; 
 }
 
 .body {
@@ -49,6 +51,9 @@
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-style: solid;
     border-color: black;
     background: white;
@@ -59,6 +64,11 @@
     overflow-y: auto;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+.modal-content button {
+    align-self: center;
+    margin-top: 10px;
 }
 
 .formUser{

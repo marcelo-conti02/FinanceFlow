@@ -19,7 +19,7 @@ export default function UserTableItem(props: { id: number, name: string, age: nu
                 </div>
             </div>
             {isOpenSeeTransactions && <SeeTransactionsModal setIsOpen={setIsOpenSeeTransactions} userName={props.name} userId={props.id}/>}
-            {isOpenRegisterTransaction && <RegisterTransactionModal setIsOpen={setIsOpenSeeTransactions} userId={props.id}/>}
+            {isOpenRegisterTransaction && <RegisterTransactionModal setIsOpen={setIsOpenRegisterTransaction} userId={props.id}/>}
         </>
     )
 }

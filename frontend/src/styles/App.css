@@ -74,3 +74,8 @@
 .formUserInput{
     margin-left: 1vw;
 }
+
+.userTableItemBtns{
+    display: flex;
+    justify-content: space-between;
+}

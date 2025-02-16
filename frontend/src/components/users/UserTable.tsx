@@ -29,7 +29,7 @@ export default function UserTable() {
                 </div>
             </div>
             <div className="body">
-                <div className="userTable">
+                <div className="table">
                     {listUsers()}
                 </div>
             </div>

@@ -20,7 +20,7 @@ export default function SeeTransactionsModal(props: { setIsOpen: (isOpen: boolea
         <div className="modal">
             <div className="modal-content">
                 <h2>{props.userName}'s transactions</h2>
-                <div>{listTransactions()}</div>
+                <div className="table">{listTransactions()}</div>
                 <button type="button" onClick={() => props.setIsOpen(false)}>Close</button>
             </div>
         </div>

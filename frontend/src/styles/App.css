@@ -7,7 +7,7 @@
     margin: 2%;
 }
 
-.userTable {
+.table {
     width: 60vw;
     display: flex;
     flex-direction: column;

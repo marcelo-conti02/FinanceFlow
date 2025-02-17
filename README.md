@@ -163,22 +163,29 @@ Gerencia os usuários.
 
 ## Como utilizar essa aplicação
 
-    1. Instale o .NET SDK;
+    1. Pré-requisitos:
+        - .NET SDK 8.0
+        - Entity Framework Core 9.0.1 
+        - Node.js 18.0
+        - SQLite 3
     2. Instale o Entity Framework Core CLI com o comando:
         "dotnet tool install --global dotnet-ef"
-    3. Instale o Node.js;
-    4. Instale o SQLite;
-    4. No diretório backend:
-        - Execute a primeira migração com os comandos:
+    3. Configurando o backend
+        No diretório backend, execute:
             dotnet ef migrations add InitialCreate
             dotnet ef database update
-    5. No diretório frontend:
-        - Instale as dependências com:
+    4. Configurando o frontend
+        No diretório frontend, execute:
             npm install
-        - Certifique-se de que o axios está instalado
             npm install axios
-    6. Execute o backend e o frontend:
+    5. Execute o backend e o frontend com os seguintes comandos:
         - Backend:
             dotnet run
         - Frontend:
             npm run dev
+    6. Acessando a Aplicação
+        Após a execução, acesse no navegador: http://localhost:5173
+
+    Observações:
+        - Certifique-se de manter backend e frontend rodando simultaneamente
+        - O banco de dados SQLite será criado automaticamente no diretório backend

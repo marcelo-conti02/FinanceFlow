@@ -136,7 +136,7 @@ Componentes responsáveis por exibir o total de receitas, despesas e saldo dos u
     - `totalIncome`: soma de todas as receitas registradas.  
     - `totalExpense`: soma de todas as despesas registradas.   
 
-### **Frontend Services**  
+#### **Frontend Services**  
 Serviços responsáveis por fazer chamadas à API para manipulação de usuários e transações.  
 
 #### **TransactionService**  
@@ -161,5 +161,24 @@ Gerencia os usuários.
 - **deleteUser(userId: number)**
   - Remove um usuário pelo ID.  
 
+## Como utilizar essa aplicação
 
-
+    1. Instale o .NET SDK;
+    2. Instale o Entity Framework Core CLI com o comando:
+        "dotnet tool install --global dotnet-ef"
+    3. Instale o Node.js;
+    4. Instale o SQLite;
+    4. No diretório backend:
+        - Execute a primeira migração com os comandos:
+            dotnet ef migrations add InitialCreate
+            dotnet ef database update
+    5. No diretório frontend:
+        - Instale as dependências com:
+            npm install
+        - Certifique-se de que o axios está instalado
+            npm install axios
+    6. Execute o backend e o frontend:
+        - Backend:
+            dotnet run
+        - Frontend:
+            npm run dev

@@ -2,13 +2,17 @@ import { useState } from "react"
 import { TransactionDto } from "../../models/transactionDto"
 import transactionService from "../../services/transactionService";
 
-export default function RegisterTransactionModal(props: { setIsOpen: (isOpen: boolean) => void, userId: number }) {
+export default function RegisterTransactionModal(props: { setIsOpen: (isOpen: boolean) => void, userId: number, userAge: number}) {
     const [description, setDescription] = useState("");
     const [value, setValue] = useState("");
     const [type, setType] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if(Number(type) == 0 && props.userAge < 18)
+            alert("Users under 18 years old can only register expenses.");
+
         try {
             const transaction: Partial<TransactionDto> = { description, value: Number(value), type: Number(type), userId: props.userId };
             await transactionService.createTransaction(transaction as TransactionDto);

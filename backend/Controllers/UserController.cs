@@ -4,17 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/users")]
 public class UserController : ControllerBase
 {
-    private readonly IUserService service;
+    private readonly IUserService userService;
+    private readonly ITransactionService transactionService;
 
-    public UserController(IUserService service)
+    public UserController(IUserService userService, ITransactionService transactionService)
     {
-        this.service = service;
+        this.userService = userService;
+        this.transactionService = transactionService;
     }
 
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var user = service.GetUserById(id);
+        var user = userService.GetUserById(id);
 
         if (user == null)
             return NotFound();
@@ -25,7 +27,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var users = service.GetAllUsers();
+        var users = userService.GetAllUsers();
         return Ok(users);
     }
 
@@ -37,14 +39,28 @@ public class UserController : ControllerBase
 
         var newUser = new User(user.Name, user.Age);
 
-        service.CreateUser(newUser);
+        userService.CreateUser(newUser);
 
         return CreatedAtAction(nameof(GetById), new { id = newUser.Id }, newUser);
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id){
-        service.DeleteUser(id);
+    public IActionResult Delete(int id)
+    {
+        Console.WriteLine($"DELETE request received for user ID: {id}");
+
+        List<Transaction>? transactions = transactionService.GetTransactionsByUserId(id);
+
+        // deletes all transactions related to the user
+        if (transactions != null)
+        {
+            foreach (Transaction transaction in transactions)
+            {
+                transactionService.DeleteTransaction(transaction.Id);
+            }
+        }
+
+        userService.DeleteUser(id);
         return NoContent();
     }
 }

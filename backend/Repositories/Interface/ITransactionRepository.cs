@@ -4,4 +4,5 @@ public interface ITransactionRepository
     Task Insert(Transaction transaction);
     List<Transaction> GetAll();
     List<Transaction> GetByUserId(int userId);
+    Task Delete(Transaction transaction);
 }

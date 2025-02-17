@@ -28,4 +28,9 @@ public class TransactionRepository : ITransactionRepository
     {
         return appDbContext.Transactions.Where(transaction => transaction.UserId == userId).ToList();
     }
+
+    public async Task Delete(Transaction transaction){
+        appDbContext.Transactions.Remove(transaction);
+        await appDbContext.SaveChangesAsync();
+    }
 }

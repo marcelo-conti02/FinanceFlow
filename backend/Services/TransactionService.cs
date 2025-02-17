@@ -40,4 +40,16 @@ public class TransactionService : ITransactionService
     {
         return transactionRepository.GetByUserId(userId);
     }
+
+    public void DeleteTransaction(int id)
+    {
+        Transaction? transaction = transactionRepository.GetById(id);
+
+        if (transaction == null)
+        {
+            throw new KeyNotFoundException($"Transaction not found.");
+        }
+
+        transactionRepository.Delete(transaction);
+    }
 }

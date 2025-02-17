@@ -33,6 +33,15 @@ const userService = {
             console.log("Error fetching user:", error);
             throw error;
         }
+    },
+
+    deleteUser: async (userId: number): Promise<void> => {
+        try {
+            await axios.delete(`${API_BASE_URL}/users/${userId}`);
+        } catch (error) {
+            console.log("Error deleting user:", error);
+            throw error;
+        }
     }
 
 }

@@ -27,4 +27,17 @@ public class UserService : IUserService
     {
         return userRepository.GetAll();
     }
+
+    public void DeleteUser(int id)
+    {
+        User? user = userRepository.GetById(id);
+
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"User not found.");
+        }
+
+        userRepository.Delete(user);
+
+    }
 }

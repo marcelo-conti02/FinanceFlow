@@ -41,4 +41,10 @@ public class UserController : ControllerBase
 
         return CreatedAtAction(nameof(GetById), new { id = newUser.Id }, newUser);
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id){
+        service.DeleteUser(id);
+        return NoContent();
+    }
 }
